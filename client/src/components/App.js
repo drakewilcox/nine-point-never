@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header'
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -54,6 +55,7 @@ class App extends Component {
         </div>
         { this.state.loggedIn &&
           <React.Fragment>
+            <Header />
           <button onClick={() => this.getNowPlaying()}>
             Check Now Playing
           </button>
