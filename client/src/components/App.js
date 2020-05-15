@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import MenuBar from './MenuBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -48,16 +48,16 @@ class App extends Component {
     
       <div className="App">
         <a href='http://localhost:8888' > Login to Spotify </a>
-        <div>
+        {/* <div>
           Now Playing: { this.state.nowPlaying.name }
-        </div>
+        </div> */}
         <div>
-          <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+          {/* <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/> */}
         </div>
         { this.state.loggedIn &&
           <Router>
-            <Header />
-              <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <MenuBar />
+              {/* <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
           </Router>
         }
       </div>
