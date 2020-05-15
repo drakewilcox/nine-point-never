@@ -39,3 +39,4 @@ https://medium.com/@natashabarsova/simple-spotify-player-in-react-b140df4a2f09
 * Started watching tutorial for React Routing from the Modern React and Redux Course on Udemy.
 https://www.udemy.com/course/react-redux/learn/lecture/6994532#overview
 
+* Continued to go through tutorial on routers, api calls, and redux for refresh and general idea of how to organize application. 
