@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -55,15 +55,10 @@ class App extends Component {
           <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
         </div>
         { this.state.loggedIn &&
-          <React.Fragment>
-            <Route path="/">
+          <Router>
             <Header />
-          <button onClick={() => this.getNowPlaying()}>
-            Check Now Playing
-          </button>
-          <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          </Route>
-          </React.Fragment>
+              <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </Router>
         }
       </div>
     );
