@@ -6,15 +6,15 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
-
+require('dotenv').config()
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = '5645efa1c0e647eebe978abc82e72708';
-var client_secret = 'b13707caa9c244978105d23bb3d0a8b5'; // Your secret
+var client_id = process.env.CLIENT_ID;
+var client_secret = process.env.CLIENT_SECRET; 
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 /**
