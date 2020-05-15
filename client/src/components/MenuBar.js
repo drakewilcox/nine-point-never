@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function MenuBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand as={Link} to="/">90.Never</Navbar.Brand>
@@ -31,4 +31,4 @@ function Header() {
     </Navbar>
   );
 }
-export default Header; 
+export default MenuBar; 
