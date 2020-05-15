@@ -10,21 +10,16 @@ function MenuBar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <NavItem>
-             <Nav.Link as={Link} to="/" > Make Survey </Nav.Link>
+             <Nav.Link as={Link} to="/" >Staff Picks</Nav.Link>
           </NavItem>
           <Nav.Link as={Link} to="/">
-           Take Survey
+           Tags
           </Nav.Link>
-        </Nav>
-        <Nav>
           <Nav.Link  as={Link} to="/">
-            Login
+            All Playlists
           </Nav.Link>
           <Nav.Link as={Link} to="/">
-            Sign Up
-          </Nav.Link>
-          <Nav.Link as={Link} to="/">
-            Sign Out
+            LogIn
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
