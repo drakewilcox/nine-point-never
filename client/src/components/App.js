@@ -10,11 +10,14 @@ class App extends Component {
     super();
     const params = this.getHashParams();
     const token = params.access_token;
-    console.log(token);
+  
     if (token) {
+      console.log(token);
       spotifyApi.setAccessToken(token);
+      this.handleSetTokenToRedux(token);
     }
     this.state = {
+      token: token,
       loggedIn: token ? true : false,
       nowPlaying: { name: 'Not Checked', albumArt: '' }
     }
@@ -31,25 +34,27 @@ class App extends Component {
     return hashParams;
   }
 
-  getNowPlaying(){
-    spotifyApi.getMyCurrentPlaybackState()
-      .then((response) => {
-        this.setState({
-          nowPlaying: { 
-              name: response.item.name, 
-              albumArt: response.item.album.images[0].url
-            }
-        });
-      })
-  }
-
-  // handleSetAccessToken () {
-  //   const action = {
-  //     type: "SET_TOKEN",
-  //     token: { token }
-  //   }
-  //   this.props.token
+  // getNowPlaying(){
+    
+  //   spotifyApi.getMyCurrentPlaybackState()
+  //     .then((response) => {
+  //       this.setState({
+  //         nowPlaying: { 
+  //             name: response.item.name, 
+  //             albumArt: response.item.album.images[0].url
+  //           }
+  //       });
+  //     })
   // }
+
+  
+  handleSetTokenToRedux(token){
+    console.log(token);
+    const action = {
+      type: "SET_TOKEN",
+      token: token
+    }
+  }
   
   render() {
     
@@ -57,9 +62,6 @@ class App extends Component {
     
       <div className="App">
         <a href='http://localhost:8888' > Login to Spotify </a>
-        {/* <div>
-          Now Playing: { this.state.nowPlaying.name }
-        </div> */}
         <div>
           {/* <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/> */}
         </div>
