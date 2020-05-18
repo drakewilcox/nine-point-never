@@ -19,7 +19,7 @@ describe('parksReducer', () => {
     );
   });
 
-  test('requesting token should successfuly update the state of username and accessToken', () => {
+  test('setting token should successfuly update the state of accessToken', () => {
     const token = "12345"
     action = {
       type: c.SET_TOKEN,
@@ -29,6 +29,19 @@ describe('parksReducer', () => {
     expect(tokenReducer(defaultState, action)).toEqual({
       username: null,
       accessToken: "12345"
+    })
+  })
+
+  test('setting userName should successfully update the state of the username', () => {
+    const username = "everythingisweird"
+    action = {
+      type: c.SET_USERNAME, 
+      username
+    }
+
+    expect(tokenReducer(defaultState, action)).toEqual({
+      username: "everythingisweird", 
+      accessToken: null
     })
   })
 
