@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import MenuBar from './MenuBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as c from '../actions/ActionTypes'
+
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     const params = this.getHashParams();
     const token = params.access_token;
   
@@ -49,11 +52,13 @@ class App extends Component {
 
   
   handleSetTokenToRedux(token){
+    const { dispatch } = this.props;
     console.log(token);
     const action = {
-      type: "SET_TOKEN",
+      type: c.SET_TOKEN,
       token: token
     }
+    dispatch(action);
   }
   
   render() {
@@ -76,4 +81,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { 
+    token: state.token 
+  }
+}
+
+// console.log(this.props.token);
+
+App = connect(mapStateToProps)(App);
+
+export default App; 
+
