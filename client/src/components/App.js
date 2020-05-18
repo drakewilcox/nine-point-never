@@ -42,6 +42,14 @@ class App extends Component {
         });
       })
   }
+
+  // handleSetAccessToken () {
+  //   const action = {
+  //     type: "SET_TOKEN",
+  //     token: { token }
+  //   }
+  //   this.props.token
+  // }
   
   render() {
     
