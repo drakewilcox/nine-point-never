@@ -4,7 +4,7 @@ import tokenReducer from '../../reducers/tokenReducer';
 describe('parksReducer', () => {
   
   const defaultState = {
-    userName: null, 
+    username: null, 
     accessToken: null
   };
 
