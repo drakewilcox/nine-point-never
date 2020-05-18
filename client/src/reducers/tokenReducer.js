@@ -10,9 +10,12 @@ export default (state=initialState, action) => {
     case c.SET_TOKEN: 
       return Object.assign({}, state, {
         accessToken: action.token
+      });
+    case c.SET_USERNAME: 
+      return Object.assign({}, state, {
+        username: action.username
       })
+    default: 
+      return state
   }
-
-
-  return state
 }
