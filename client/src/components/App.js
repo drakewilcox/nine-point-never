@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as c from '../actions/ActionTypes'
 
+import Header from './Header';
+
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -72,7 +74,12 @@ class App extends Component {
         </div>
         { this.state.loggedIn &&
           <Router>
-            <MenuBar />
+            <div>
+              <MenuBar />
+            </div>
+            <div>
+              <Header />
+            </div>
               {/* <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
           </Router>
         }
@@ -86,8 +93,6 @@ const mapStateToProps = state => {
     token: state.token 
   }
 }
-
-// console.log(this.props.token);
 
 App = connect(mapStateToProps)(App);
 
