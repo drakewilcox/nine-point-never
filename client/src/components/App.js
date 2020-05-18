@@ -44,6 +44,7 @@ class App extends Component {
   }
   
   render() {
+    console.log(this.getPlaylist())
     return (
     
       <div className="App">

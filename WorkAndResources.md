@@ -40,3 +40,6 @@ https://medium.com/@natashabarsova/simple-spotify-player-in-react-b140df4a2f09
 https://www.udemy.com/course/react-redux/learn/lecture/6994532#overview
 
 * Continued to go through tutorial on routers, api calls, and redux for refresh and general idea of how to organize application. 
+
+* Example of using actions with spotify API: 
+https://github.com/Pau1fitz/react-spotify/blob/master/src/App.js
