@@ -18,7 +18,6 @@ class App extends Component {
     const token = params.access_token;
   
     if (token) {
-      console.log(token);
       spotifyApi.setAccessToken(token);
       this.handleSetTokenToRedux(token);
     }
@@ -40,31 +39,30 @@ class App extends Component {
     return hashParams;
   }
 
-  // getNowPlaying(){
-    
-  //   spotifyApi.getMyCurrentPlaybackState()
-  //     .then((response) => {
-  //       this.setState({
-  //         nowPlaying: { 
-  //             name: response.item.name, 
-  //             albumArt: response.item.album.images[0].url
-  //           }
-  //       });
-  //     })
-  // }
+ 
 
-  
   handleSetTokenToRedux(token){
     const { dispatch } = this.props;
-    console.log(token);
+  
     const action = {
       type: c.SET_TOKEN,
       token: token
     }
     dispatch(action);
   }
+
+  handleSettingCoverImage = async (id) => {
+    await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
+      headers: {
+        'Authorization': 'Bearer ' + this.state.token
+      }
+    });
+    const { dispatch } = this.props; 
+    dispatch(makeApiCall());
+  }
   
   render() {
+    console.log(this.props.token.accessToken);
     
     return (
     
