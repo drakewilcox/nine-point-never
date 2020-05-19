@@ -69,10 +69,8 @@ class App extends Component {
     return (
     
       <div className="App">
-        <a href='http://localhost:8888' > Login to Spotify </a>
-        <div>
-          {/* <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/> */}
-        </div>
+        <a href='http://localhost:8888' >Login to Spotify</a>
+       
         { this.state.loggedIn &&
           <Router>
             <div>
@@ -84,7 +82,6 @@ class App extends Component {
             <div>
               <MixtapeList />
             </div>
-              {/* <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
           </Router>
         }
       </div>
