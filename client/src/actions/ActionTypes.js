@@ -1,2 +1,5 @@
 export const SET_TOKEN = 'SET_TOKEN';
-export const SET_USERNAME = 'SETUSERNAME';
+export const SET_USERNAME = 'SET_USERNAME';
+export const REQUEST_IMAGE = 'REQUEST_IMAGE';
+export const GET_IMAGE_SUCCESS = 'GET_IMAGE_SUCCESS';
+export const GET_IMAGE_FAILURE = 'GET_IMAGE_FAILURE';
