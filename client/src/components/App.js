@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuBar from './MenuBar';
+import MixtapeList from './Mixtapes/MixtapeList'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as c from '../actions/ActionTypes'
@@ -79,6 +80,9 @@ class App extends Component {
             </div>
             <div>
               <Header />
+            </div>
+            <div>
+              <MixtapeList />
             </div>
               {/* <iframe src="https://open.spotify.com/embed/playlist/7DpIs40KJQmdEuTdz6unYl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
           </Router>
