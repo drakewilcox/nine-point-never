@@ -5,15 +5,15 @@ import { useHistory } from 'react-router-dom';
 
 function Mixtape(props) {
   const history = useHistory();
-  const { surveyObj } = props
+  const { mixtapeObj } = props
 
   return(
     <React.Fragment>
-      <h1>{surveyObj.title}</h1>
+      <h1>{mixtapeObj.title}</h1>
       <div>
-        <iframe src= { `https://open.spotify.com/embed/playlist/${surveyObj.playlistId}` }  width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" />
+        <iframe src= { `https://open.spotify.com/embed/playlist/${mixtapeObj.playlistId}` }  width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" />
       </div>
-      <p>{surveyObj.user}</p>
+      <p>{mixtapeObj.user}</p>
     </React.Fragment>
   );
 }
