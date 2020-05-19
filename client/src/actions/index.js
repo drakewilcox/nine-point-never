@@ -1,4 +1,4 @@
-import * as c from '.ActionTypes';
+import * as c from './ActionTypes';
 
 export const setToken = (token) => ({
     type: c.SET_TOKEN,
@@ -10,9 +10,24 @@ export const setUsername = (username) => ({
   username
 });
 
-export const makeApiCaall = (id, token) => {
+export const requestImage = () => ({
+  type: c.REQUEST_IMAGE
+});
+
+export const getImageSuccess = (image) => ({
+  type: c.GET_IMAGE_SUCCESS, 
+  image
+});
+
+export const getImageFailure = (error) => ({
+  type: c.GET_IMAGE_FAILURE, 
+  error
+});
+
+export const makeApiCall = (id, token) => {
   return dispatch => {
-    const request = new Request(`https://api.spotify.com/v1/playlists/${id}/images`, {
+    dispatch(requestImage);
+    return fetch(`https://api.spotify.com/v1/playlists/${id}/images`, {
       headers: new Headers({
         'Authorization': 'Bearer ' + token
       })
