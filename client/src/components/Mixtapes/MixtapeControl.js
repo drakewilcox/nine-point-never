@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 function MixtapeControl(props) {
 
+ 
 
 return(
   props
