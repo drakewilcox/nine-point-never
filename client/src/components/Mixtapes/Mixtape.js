@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,21 +7,30 @@ import { makeApiCall } from '../../actions'
 function Mixtape(props) {
   const history = useHistory();
   const { mixtapeObj } = props
-  console.log(props.token);
+ 
 
-const handleSettingCoverImage = async (id) => {
-    await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + props.token
-      }
-    });
-    const { dispatch } = props; 
-    dispatch(makeApiCall());
-  }
+useEffect(() => {
+    const id = mixtapeObj.playlistId
+    const token = props.token
+    const { dispatch } = props;
+  
+    dispatch(makeApiCall(id, token));
+  })
 
-  console.log(props.imageUrl);
-  handleSettingCoverImage(mixtapeObj.id)
+// const handleSettingCoverImage = async (id) => {
+//     await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': 'Bearer ' + props.token
+//       }
+//     });
+//     const { dispatch } = props; 
+//     dispatch(makeApiCall());
+//   }
+
+  console.log('image Url: ', props.imageUrl);
+  // handleSettingCoverImage(mixtapeObj.id)
   return(
     <React.Fragment>
       <h1>{mixtapeObj.title}</h1>
@@ -35,7 +44,7 @@ const handleSettingCoverImage = async (id) => {
 const mapStateToProps = state => {
   return {
     token: state.token.accessToken,
-    imageUrl: state.images
+    imageUrl: state.images.mixtapeImages
   }
 }
 
