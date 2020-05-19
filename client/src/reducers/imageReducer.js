@@ -1,4 +1,4 @@
-import * as c from '../action/ActionTypes.js';
+import * as c from '../actions/ActionTypes.js';
 
 const defaultState = {
   isLoading: false,

@@ -51,15 +51,16 @@ class App extends Component {
     dispatch(action);
   }
 
-  handleSettingCoverImage = async (id) => {
-    await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
-      headers: {
-        'Authorization': 'Bearer ' + this.state.token
-      }
-    });
-    const { dispatch } = this.props; 
-    dispatch(makeApiCall());
-  }
+  // handleSettingCoverImage = async (id) => {
+  //   await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
+  //     method: 'GET',
+  //     headers: {
+  //       'Authorization': 'Bearer ' + this.state.token
+  //     }
+  //   });
+  //   const { dispatch } = this.props; 
+  //   dispatch(makeApiCall());
+  // }
   
   render() {
     console.log(this.props.token.accessToken);
