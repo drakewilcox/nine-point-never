@@ -14,9 +14,9 @@ export const requestImage = () => ({
   type: c.REQUEST_IMAGE
 });
 
-export const getImageSuccess = (image) => ({
+export const getImageSuccess = (images) => ({
   type: c.GET_IMAGE_SUCCESS, 
-  image
+  images
 });
 
 export const getImageFailure = (error) => ({
