@@ -20,10 +20,12 @@ class App extends Component {
       this.handleSetTokenToRedux(token);
     }
     this.state = {
-      currentImage: {},
+      error: null,
+      isLoaded: false,
+      currentImage: [],
       token: token,
       loggedIn: token ? true : false,
-      nowPlaying: { name: 'Not Checked', albumArt: '' },
+    
     };
   }
   getHashParams() {
@@ -49,28 +51,37 @@ class App extends Component {
   }
 
   handleSettingCoverImage = async (id) => {
-    // const apiToken = this.props.token.accessToken
+    const apiToken = this.props.token.accessToken
     await fetch(`https://api.spotify.com/v1/playlists/${id}/images`, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + 'BQBcH3ZWx863w9v-Fv5P32d7jyo3JFcO8IDgUT3Bl75lDlU0PZkyDCxkzwQwPB1UHM6bimDBTVQ8rfvZth-4m0k-zSF6Doa-W9oBTV9rWjDQsyvC6ZJk_-DWt7e5ZDNrAoq_CesECpwcDMiAtu-TOSqGfqwKUlllZbmySBLZDUqQcGdTAWw2o5P4bEHPgtBeqZ1zJikC42ixdwzTQKBIRRxwq96hLy_wQNW241x-_4KcUG7qZTWefxyTp5g0DJFscd4ntbgPxAEWJ7Ul'
+        'Authorization': 'Bearer ' + apiToken
       }
     })
     .then(response => response.json())
     .then(
       (jsonifiedResponse) => {
         this.setState({
+          isLoaded: true,
           currentImage: jsonifiedResponse[0],
         });
-      }
-      
-    )
+      })
+      .catch((error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        })
+      })
 
   }
   
   render() {
-    const { currentImage } = this.state
-    console.log(this.state.currentImage.url)
+    let currentImageUrl;
+    const { error, isLoaded, currentImage } = this.state;
+    if(!error && isLoaded) {
+     currentImageUrl = currentImage.url; 
+    }
+   
     return (
 
       <div className="App">
@@ -85,7 +96,8 @@ class App extends Component {
             </div>
             <div>
               <MixtapeList 
-                handleSettingCoverImage={this.handleSettingCoverImage}/>
+                handleSettingCoverImage={this.handleSettingCoverImage}
+               />
             </div>
           </Router>
         }

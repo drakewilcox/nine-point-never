@@ -16,6 +16,7 @@ function Mixtape(props) {
         <iframe src= { `https://open.spotify.com/embed/playlist/${mixtapeObj.playlistId}` }  width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" />
       </div>
       <p>{mixtapeObj.user}</p>
+      <p>{props.currentImageUrl}</p>
     </React.Fragment>
   );
 }
