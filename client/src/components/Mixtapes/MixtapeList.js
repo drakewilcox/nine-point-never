@@ -11,6 +11,15 @@ function MixtapeList(props) {
 
   let renderList; 
 
+  const mixtapeListGrid = {
+    position: 'relative',
+    top: '5vh', 
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignContent: 'space-between',
+    flexWrap: 'wrap'
+  }
+
   if(isLoaded(mixtapes)) {
     renderList = mixtapes.map((a) => <Mixtape 
     handleSettingCoverImage={props.handleSettingCoverImage} 
@@ -23,7 +32,7 @@ function MixtapeList(props) {
   return ( 
     <React.Fragment>
       <h1>Playlists:</h1>
-      <div>{renderList}</div>
+      <div style={mixtapeListGrid}>{renderList}</div>
     </React.Fragment>
   )
 }
