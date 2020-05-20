@@ -27,18 +27,20 @@ export const getImageFailure = (error) => ({
 export const makeApiCall = (id, token) => {
   return dispatch => {
     dispatch(requestImage);
-    return fetch(`https://api.spotify.com/v1/playlists/${id}/images`, {
-      headers: new Headers({
+    return fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
+      // method: 'GET',
+      headers: {
+        // 'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
+      }
+    })
+      .then(response => response.json())
+      .then((jsonifiedResponse) => {
+        dispatch(getImageSuccess(jsonifiedResponse));
       })
-    })
-    .then(response => response.json())
-    .then((jsonifiedResponse) => {
-      dispatch(getImageSuccess(jsonifiedResponse));
-    })
-    .catch((error) => {
-      dispatch(getImageFailure(error));
-    });
+      .catch((error) => {
+        dispatch(getImageFailure(error));
+      });
   }
 }
 

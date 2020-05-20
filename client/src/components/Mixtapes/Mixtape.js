@@ -6,32 +6,26 @@ import { makeApiCall } from '../../actions'
 
 function Mixtape(props) {
   const history = useHistory();
-  const { mixtapeObj } = props
- 
-
-useEffect(() => {
-    const id = mixtapeObj.playlistId
-    const token = props.token
-    const { dispatch } = props;
+  const { mixtapeObj, handleSettingCoverImage } = props
   
-    dispatch(makeApiCall(id, token));
-  })
 
-// const handleSettingCoverImage = async (id) => {
-//     await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer ' + props.token
-//       }
-//     });
-//     const { dispatch } = props; 
-//     dispatch(makeApiCall());
-//   }
+// useEffect(() => {
+//     const id = mixtapeObj.playlistId
+//     const token = props.token
+//     const { dispatch } = props;
+  
+//     dispatch(makeApiCall(id, token));
+//   })
 
-  console.log('image Url: ', props.imageUrl);
+// const getImageFromApi = () => {
+
+// }
+
+
+  // console.log('image Url: ', props.imageUrl[0]);
   // handleSettingCoverImage(mixtapeObj.id)
   return(
+    handleSettingCoverImage(mixtapeObj.playlistId),
     <React.Fragment>
       <h1>{mixtapeObj.title}</h1>
       <div>

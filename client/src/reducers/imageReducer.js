@@ -15,7 +15,7 @@ export default (state=defaultState, action) =>{
       case c.GET_IMAGE_SUCCESS: 
         return Object.assign({}, state, {
           isLoading: false, 
-          mixtapeImages: action.image
+          mixtapeImages: action.images
         });
       case c.GET_IMAGE_FAILURE: 
         return Object.assign({}, state, {

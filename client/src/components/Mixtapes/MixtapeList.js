@@ -12,7 +12,7 @@ function MixtapeList(props) {
   let renderList; 
 
   if(isLoaded(mixtapes)) {
-    renderList = mixtapes.map((a) => <Mixtape mixtapeObj={a} key={a.id} /> );
+    renderList = mixtapes.map((a) => <Mixtape handleSettingCoverImage={props.handleSettingCoverImage} mixtapeObj={a} key={a.id} /> );
   } else {
     renderList = 'loading...';
   }
