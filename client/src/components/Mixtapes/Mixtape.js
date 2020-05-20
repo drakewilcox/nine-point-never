@@ -55,9 +55,8 @@ makeApiCall = () => {
       height: '250px',
       margin: '10px',
       boxShadow: '0 10px 10px 0 rgba(0,0,0,0.10)'
-
     }
-
+  
     const { mixtapeObj } = this.props
     const { error, isLoaded, currentImageUrl } = this.state;
     if(error) {
@@ -70,9 +69,16 @@ makeApiCall = () => {
         <React.Fragment>
           {/* <h1>{mixtapeObj.title}</h1>
           <p>{currentImageUrl.url}</p> */}
-          <Card style={initialCardStyles}>
+          <div>
+            <Card className='container' style={initialCardStyles}>
+                
+                <div className='middle'>
+                  <h1 className='text'>{mixtapeObj.title}</h1>
+                
+              </div>
+            </Card>
+          </div>
 
-          </Card>
           {/* <div>
             <iframe src= { `https://open.spotify.com/embed/playlist/${mixtapeObj.playlistId}` }  width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" />
           </div> */}

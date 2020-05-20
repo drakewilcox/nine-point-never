@@ -15,7 +15,7 @@ function MixtapeList(props) {
     position: 'relative',
     top: '5vh', 
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignContent: 'space-between',
     flexWrap: 'wrap'
   }

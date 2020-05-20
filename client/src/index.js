@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'firebase/auth'
+import './index.css';
 
 const store = createStore(
   rootReducer,
