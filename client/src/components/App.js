@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import * as c from '../actions/ActionTypes'
 import Header from './Header';
 
-
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
@@ -39,8 +38,6 @@ class App extends Component {
     return hashParams;
   }
 
- 
-
   handleSetTokenToRedux(token){
     const { dispatch } = this.props;
   
@@ -70,31 +67,14 @@ class App extends Component {
     )
 
   }
-
-  
-
-  // handleSettingCoverImage = async (id) => {
-  //   await fetch(`https://api.spotify.com/v1/playlists/${id}/images`,{
-  //     method: 'GET',
-  //     headers: {
-  //       'Authorization': 'Bearer ' + this.state.token
-  //     }
-  //   });
-  //   const { dispatch } = this.props; 
-  //   dispatch(makeApiCall());
-  // }
   
   render() {
-  //  console.log(this.state.currentImage);
-  // console.log(this.props.token.accessToken)
-  const { currentImage } = this.state
- console.log(this.state.currentImage.url)
+    const { currentImage } = this.state
+    console.log(this.state.currentImage.url)
     return (
 
-    
       <div className="App">
         <a href='http://localhost:8888' >Login to Spotify</a>
-       
         { this.state.loggedIn &&
           <Router>
             <div>
