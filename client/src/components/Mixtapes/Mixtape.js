@@ -8,22 +8,6 @@ function Mixtape(props) {
   const history = useHistory();
   const { mixtapeObj, handleSettingCoverImage } = props
   
-
-// useEffect(() => {
-//     const id = mixtapeObj.playlistId
-//     const token = props.token
-//     const { dispatch } = props;
-  
-//     dispatch(makeApiCall(id, token));
-//   })
-
-// const getImageFromApi = () => {
-
-// }
-
-
-  // console.log('image Url: ', props.imageUrl[0]);
-  // handleSettingCoverImage(mixtapeObj.id)
   return(
     handleSettingCoverImage(mixtapeObj.playlistId),
     <React.Fragment>
