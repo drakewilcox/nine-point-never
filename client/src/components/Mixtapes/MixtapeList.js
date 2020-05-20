@@ -15,8 +15,7 @@ function MixtapeList(props) {
     renderList = mixtapes.map((a) => <Mixtape 
     handleSettingCoverImage={props.handleSettingCoverImage} 
     mixtapeObj={a} 
-    key={a.id}
-    currentImageUrl={props.currentImageUrl} /> );
+    key={a.id} /> );
   } else {
     renderList = 'loading...';
   }
