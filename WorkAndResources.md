@@ -45,3 +45,5 @@ https://www.udemy.com/course/react-redux/learn/lecture/6994532#overview
 https://github.com/Pau1fitz/react-spotify/blob/master/src/App.js
 
 * Began creating playlist database manually in firebase which takes some time. 
+
+* Started updating more playlists to Firebase. 
