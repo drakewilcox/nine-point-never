@@ -62,8 +62,6 @@ class App extends Component {
     })
   }
 
-  
-  
   render() {
     const bodyStyle = {
      marginLeft: '2%',
