@@ -12,17 +12,19 @@ function MixtapeList(props) {
   let renderList; 
 
   const mixtapeListGrid = {
+    backgroundColor: 'beige',
     position: 'relative',
-    top: '5vh', 
+    top: '1vh', 
+    marginBottom: '4vh',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignContent: 'space-between',
     flexWrap: 'wrap'
   }
 
   if(isLoaded(mixtapes)) {
     renderList = mixtapes.map((a) => <Mixtape 
-    handleSettingCoverImage={props.handleSettingCoverImage} 
+    whereMixtapeClicked={props.onMixtapeClick}
     mixtapeObj={a} 
     key={a.id} /> );
   } else {
@@ -31,7 +33,6 @@ function MixtapeList(props) {
 
   return ( 
     <React.Fragment>
-      <h1>Playlists:</h1>
       <div style={mixtapeListGrid}>{renderList}</div>
     </React.Fragment>
   )
