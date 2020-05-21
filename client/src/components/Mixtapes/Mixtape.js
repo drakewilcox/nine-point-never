@@ -5,19 +5,30 @@ import { useHistory } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 class Mixtape extends Component {
- constructor(props) {
-   super(props);
-   this.state = {
-    error: null,
-    isLoaded: false,
-    currentImageUrl: []
-   }
- }
- componentDidMount() {
-   this.makeApiCall()
- }
-
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      currentImageUrl: []
+    }
+  }
+  componentDidMount() {
+    this.makeApiCall()
+  }
+  
+  handleMixtapeClick = () => {
+    const { mixtapeObj } = this.props
+  const action = {
+    type: "UPDATE_SELECTED",
+    playlistId: mixtapeObj.playlistId,
+    title: mixtapeObj.title, 
+    user: mixtapeObj.user,
+    description: mixtapeObj.description,
+    imageUrl: this.state.currentImageUrl.url
+  }
+  this.props.whereMixtapeClicked(action);
+}
 
 makeApiCall = () => {
   const { mixtapeObj } = this.props
@@ -70,7 +81,7 @@ makeApiCall = () => {
           {/* <h1>{mixtapeObj.title}</h1>
           <p>{currentImageUrl.url}</p> */}
           <div>
-            <Card className='container' style={initialCardStyles}>
+            <Card onClick={this.handleMixtapeClick} className='container' style={initialCardStyles}>
                 
                 <div className='middle'>
                   <h1 className='text'>{mixtapeObj.title}</h1>
