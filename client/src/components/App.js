@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as c from '../actions/ActionTypes'
 import Header from './Header';
+import SelectedMixtape from './Mixtapes/SelectedMixtape';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -25,6 +26,7 @@ class App extends Component {
       currentImage: [],
       token: token,
       loggedIn: token ? true : false,
+      showSelected: false
     
     };
   }
@@ -50,32 +52,29 @@ class App extends Component {
     dispatch(action);
   }
 
-  handleSettingCoverImage = async (id) => {
-    const apiToken = this.props.token.accessToken
-    await fetch(`https://api.spotify.com/v1/playlists/${id}/images`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + apiToken
-      }
-    })
-    .then(response => response.json())
-    .then(
-      (jsonifiedResponse) => {
-        this.setState({
-          isLoaded: true,
-          currentImage: jsonifiedResponse[0],
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        })
-      })
 
+  handleUpdateSelectedMixtape = (action) => {
+    console.log(this.props)
+    const { dispatch } = this.props;
+    dispatch(action);
+    this.setState({
+      showSelected: true
+    })
   }
+
+  
   
   render() {
+    const bodyStyle = {
+     marginLeft: '2%',
+     marginRight: '2%',
+     marginTop: '2%'
+     }
+    const listBody = {
+      backgroundColor: 'beige'
+    }
+    
+    console.log(this.props.selectedMixtape.imageUrl)
     let currentImageUrl;
     const { error, isLoaded, currentImage } = this.state;
     if(!error && isLoaded) {
@@ -85,8 +84,6 @@ class App extends Component {
     return (
 
       <div className="App">
-        <a href='http://localhost:8888' >Login to Spotify</a>
-        { this.state.loggedIn &&
           <Router>
             <div>
               <MenuBar />
@@ -94,10 +91,21 @@ class App extends Component {
             <div>
               <Header />
             </div>
-            <div>
-              <MixtapeList 
-                handleSettingCoverImage={this.handleSettingCoverImage}
-               />
+          </Router>
+        { this.state.loggedIn &&
+          <Router>
+            <div style={bodyStyle}>
+              {this.state.showSelected &&
+              <div>
+                <SelectedMixtape selectedMixtape/>
+                <hr></hr>
+              </div>
+              }
+              <div style={listBody}>
+                <MixtapeList 
+                  onMixtapeClick={this.handleUpdateSelectedMixtape}
+                  />
+              </div>
             </div>
           </Router>
         }
@@ -108,7 +116,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return { 
-    token: state.token 
+    token: state.token, 
+    selectedMixtape: state.selectedMixtape,
+    selectedUrl: state.selectedUrl,
+    currentImageUrl: state.CurrentUrl
   }
 }
 
