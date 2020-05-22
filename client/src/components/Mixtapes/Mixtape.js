@@ -78,8 +78,6 @@ makeApiCall = () => {
     } else {
       return(
         <React.Fragment>
-          {/* <h1>{mixtapeObj.title}</h1>
-          <p>{currentImageUrl.url}</p> */}
           <div>
             <Card onClick={this.handleMixtapeClick} className='container' style={initialCardStyles}>
                 
